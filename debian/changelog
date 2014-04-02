@@ -1,0 +1,3 @@
+hello-world-agent (0-0dev0) unstable; urgency=low
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+ -- Sungho Arai <sungho1031park@gmail.com>  Fri, 21 Jun 2013 12:27:17 +0900

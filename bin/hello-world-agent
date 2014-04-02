@@ -1,0 +1,18 @@
+#!/usr/bin/python
+
+
+__author__    = 'Sungho Arai'
+__copyright__ = 'Copyright 2014, Sungho Arai'
+
+from tornado.options import define, options
+
+import threading
+
+
+def main():
+  ips.tools.StartTool(threading.Thread())
+
+
+if __name__ == '__main__':
+  main()
+
