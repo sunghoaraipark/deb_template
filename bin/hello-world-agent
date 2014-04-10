@@ -7,10 +7,26 @@ __copyright__ = 'Copyright 2014, Sungho Arai'
 from tornado.options import define, options
 
 import threading
+import time
+
+class HelloWorldAgent(threading.Thread):
+
+  def __init__(self, name):
+    super(HelloWorldAgent, self).__init__()
+    self.name = name
+
+  def run(self):
+    while True:
+      print(self.name)
+      time.sleep(5)
 
 
 def main():
-  ips.tools.StartTool(threading.Thread())
+  hwagent = HelloWorldAgent("sungho")
+  hwagent.start()
+
+  while hwagent.isAlive():
+    hwagent.join(1)
 
 
 if __name__ == '__main__':
