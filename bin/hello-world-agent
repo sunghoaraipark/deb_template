@@ -14,6 +14,11 @@ import threading
 import time
 
 
+define('name',
+    default="sungo", help="name",
+    metavar="NAME")
+
+
 class HelloWorldAgent(threading.Thread):
 
   def __init__(self, name):
@@ -28,7 +33,9 @@ class HelloWorldAgent(threading.Thread):
 
 
 def main():
-  hwagent = HelloWorldAgent("sungho")
+  options.parse_command_line()
+
+  hwagent = HelloWorldAgent(options.name)
   hwagent.start()
 
   while hwagent.isAlive():
