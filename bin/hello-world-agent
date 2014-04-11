@@ -4,26 +4,27 @@
 __author__    = 'Sungho Arai'
 __copyright__ = 'Copyright 2014, Sungho Arai'
 
+
 from tornado.options import define, options
+
 
 import logging
 import sys
 import threading
 import time
 
+
 class HelloWorldAgent(threading.Thread):
 
   def __init__(self, name):
     super(HelloWorldAgent, self).__init__()
+    self.setDaemon(True)
     self.name = name
 
   def run(self):
-    try:
-      while True:
+    while True:
         print(self.name)
         time.sleep(5)
-    except Exception, e:
-      logging.error(e)
 
 
 def main():
