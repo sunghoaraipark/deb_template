@@ -6,6 +6,8 @@ __copyright__ = 'Copyright 2014, Sungho Arai'
 
 from tornado.options import define, options
 
+import logging
+import sys
 import threading
 import time
 
@@ -16,9 +18,12 @@ class HelloWorldAgent(threading.Thread):
     self.name = name
 
   def run(self):
-    while True:
-      print(self.name)
-      time.sleep(5)
+    try:
+      while True:
+        print(self.name)
+        time.sleep(5)
+    except Exception, e:
+      logging.error(e)
 
 
 def main():
@@ -26,7 +31,11 @@ def main():
   hwagent.start()
 
   while hwagent.isAlive():
-    hwagent.join(1)
+    try:
+      hwagent.join(1)
+    except KeyboardInterrupt:
+      logging.error("Keyboard Interrupt...")
+      sys.exit(1)
 
 
 if __name__ == '__main__':
